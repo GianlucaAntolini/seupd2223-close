@@ -118,7 +118,7 @@ public class CloseSearchEngine {
                 runPath,
                 maxDocsRetrieved,
                 false,
-                "all-MiniLM-L6-v2"
+                null
         );
         searcher.search();
 
