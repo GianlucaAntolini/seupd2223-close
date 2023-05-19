@@ -33,7 +33,6 @@
 
 # LaTeX files
 *.aux
-*.out
 *.log
 *.toc
 *.synctex.gz
@@ -62,7 +61,6 @@ tomcat-logs/
 *.jar
 *.war
 *.ear
-*.zip
 *.tar.gz
 *.rar
 
@@ -74,3 +72,47 @@ tomcat-logs/
 code/data/*
 code/experiment/*
 code/test/*
+.vscode
+experiment
+
+#latex
+*.acn
+*.acr
+*.alg
+*.bak
+*.bcf
+*.brf
+*.bst
+*.dvi
+*.fdb_latexmk
+*.fls
+*.glg
+*.glo
+*.gls
+*.idx
+*.ilg
+*.ind
+*.ist
+*.lof
+*.lol
+*.lot
+*.maf
+*.mtc
+*.mtc1
+*.nav
+*.nlo
+*.nls
+*.pdf
+*.pyg
+*.run.xml
+*.snm
+*.tex.backup
+*.tex~
+*.thm
+*.vrb
+*.xdy
+*.xml
+*blx.bib
+.bak
+.mtc
+build/

@@ -19,6 +19,12 @@ import org.nd4j.linalg.factory.Nd4j;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * The re-ranking model to re-rank documents.
+ * @author CLOSE GROUP
+ * @version 1.0
+ */
+
 public class ReRanker {
 
     /**
@@ -80,11 +86,12 @@ public class ReRanker {
      *
      * @param query     the query to check similarity to
      * @param scoreDocs the list of documents to sort
+     * @param sum_queries list of additional queries used to calculate the similarity score
      * @return the sorted score docs
      * @throws TranslateException if an error occurs during translation
      * @throws IOException        if an I/O error occurs
      */
-    public ScoreDoc[] sort(String query, ScoreDoc[] scoreDocs) throws TranslateException, IOException {
+    public ScoreDoc[] sort(String query, List<String> sum_queries, ScoreDoc[] scoreDocs) throws TranslateException, IOException {
         // Create the fields to get the body of the documents
         final Set<String> fields = new HashSet<>();
         fields.add(ParsedTextDocument.Fields.BODY);
@@ -95,8 +102,8 @@ public class ReRanker {
             documents[i] = storedFields.document(scoreDocs[i].doc, fields).get(ParsedTextDocument.Fields.BODY);
         }
 
-        // Add the query to the list of documents
-        documents[scoreDocs.length] = query;
+        // Add the query to the list of documents, Join sum_queries with a space
+        documents[scoreDocs.length] = query + " " +String.join(" ", sum_queries);
 
         // Get the embeddings of the documents
         List<INDArray> embeddings = get_embeddings(documents);
@@ -141,6 +148,10 @@ public class ReRanker {
     }
 
 
+    /**
+     * Method to print the device that will use the model
+     * @param args the arguments for the method.
+     */
     public static void main(String[] args) {
         System.out.println(Device.fromName("cuda"));
     }

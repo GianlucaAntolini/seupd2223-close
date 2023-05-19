@@ -148,6 +148,9 @@ public class Searcher {
      * @param reRankModel      model name for re-ranking
      * @throws NullPointerException     if any of the parameters is {@code null}.
      * @throws IllegalArgumentException if any of the parameters assumes invalid values.
+     * @throws IOException for any I/O error
+     * @throws ModelNotFoundException if the model for re-ranking has not been found
+     * @throws MalformedModelException if the model for re-ranking is not setup correctly.
      */
     public Searcher(final Analyzer analyzer, final Similarity similarity, final String indexPath,
                     final String topicsFile, final int expectedTopics, final String runID, final String runPath,
@@ -323,6 +326,7 @@ public class Searcher {
 
                 System.out.printf("Searching for topic %s.%n", t.getQueryID());
 
+                List<String> queries = null;
                 String query = QueryParserBase.escape(t.getValue(TOPIC_FIELDS.TITLE));
 
                 if (useEmbeddings) {
@@ -332,7 +336,6 @@ public class Searcher {
                 } else {
                     bq = new BooleanQuery.Builder();
 
-                    List<String> queries = null;
                     queries = getExpansion(t.getQueryID());
 
                     List<Query> lq = new ArrayList<Query>();
@@ -358,7 +361,7 @@ public class Searcher {
                 if (reRanker == null) {
                     sd = docs.scoreDocs;
                 } else {
-                    sd = reRanker.sort(query, docs.scoreDocs);
+                    sd = reRanker.sort(query, queries, docs.scoreDocs);
                 }
 
                 for (int i = 0, n = sd.length; i < n; i++) {
@@ -424,11 +427,15 @@ public class Searcher {
     }
 
 
-
-
+    /**
+     * Method to get the expansions for a query given the id of a query.
+     * @param queryID the id of the query from which we get expansion
+     * @return list of expansions
+     * @throws IOException for any I/O error.
+     */
     public List<String> getExpansion (String queryID) throws IOException {
         Gson gson = new Gson();
-        BufferedReader reader = new BufferedReader(new FileReader("code/python_scripts/result.json"));
+        BufferedReader reader = new BufferedReader(new FileReader("python_scripts/result.json"));
         HashMap<String, ArrayList<String>> hmap = gson.fromJson(reader, HashMap.class);
 
         ArrayList <String> list = hmap.get(queryID);
@@ -441,6 +448,5 @@ public class Searcher {
 
 }
 
-//TRY WITH FRENCHMINIMALSTEM
 //TRY OTHER SIMILARITY NOW WITH QUERY EXPANSION
 
