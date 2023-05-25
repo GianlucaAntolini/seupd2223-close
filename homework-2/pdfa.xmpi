@@ -70,12 +70,12 @@
    <dc:format>application/pdf</dc:format> 
    <dc:type><rdf:Bag><rdf:li>journal</rdf:li></rdf:Bag></dc:type>
    <dc:title><rdf:Alt><rdf:li xml:lang="x-default">SEUPD@CLEF: Team CLOSE</rdf:li></rdf:Alt></dc:title>
-   <dc:creator><rdf:Seq><rdf:li>Antolini Gianluca</rdf:li>
-     <rdf:li>Boscolo Cegion Nicola</rdf:li>
-     <rdf:li>Cazzaro Mirco</rdf:li>
-     <rdf:li>Martinelli Marco</rdf:li>
-     <rdf:li>Safavi Seyedreza</rdf:li>
-     <rdf:li>Shami Farzad</rdf:li></rdf:Seq></dc:creator>
+   <dc:creator><rdf:Seq><rdf:li>Gianluca Antolini</rdf:li>
+     <rdf:li>Nicola Boscolo</rdf:li>
+     <rdf:li>Mirco Cazzaro</rdf:li>
+     <rdf:li>Marco Martinelli</rdf:li>
+     <rdf:li>Seyedreza Safavi</rdf:li>
+     <rdf:li>Farzad Shami</rdf:li></rdf:Seq></dc:creator>
    <dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2023 Copyright for this paper by its authors.\\ Use permitted under Creative Commons License Attribution 4.0 International (CC BY 4.0).</rdf:li></rdf:Alt></dc:rights>
    <dc:description><rdf:Alt><rdf:li xml:lang="x-default">CEUR Workshop Proceedings (CEUR-WS.org)</rdf:li></rdf:Alt></dc:description>
    <dc:subject><rdf:Bag><rdf:li>Information Retrieval </rdf:li>
@@ -95,9 +95,9 @@
   </rdf:Description> 
   <rdf:Description rdf:about="" xmlns:xmp="http://ns.adobe.com/xap/1.0/"> 
    <xmp:CreatorTool>LaTeX with hyperref</xmp:CreatorTool> 
-   <xmp:ModifyDate>2023-05-23T09:18:00+02:00</xmp:ModifyDate> 
-   <xmp:CreateDate>2023-05-23T09:18:00+02:00</xmp:CreateDate> 
-   <xmp:MetadataDate>2023-05-23T09:18:00+02:00</xmp:MetadataDate> 
+   <xmp:ModifyDate>2023-05-23T09:38:35+02:00</xmp:ModifyDate> 
+   <xmp:CreateDate>2023-05-23T09:38:35+02:00</xmp:CreateDate> 
+   <xmp:MetadataDate>2023-05-23T09:38:35+02:00</xmp:MetadataDate> 
   </rdf:Description> 
   <rdf:Description rdf:about="" xmlns:xmpRights = "http://ns.adobe.com/xap/1.0/rights/"> 
    <xmpRights:Marked>True</xmpRights:Marked>
@@ -105,8 +105,8 @@
    <xmpRights:WebStatement>https://creativecommons.org/licenses/by/4.0</xmpRights:WebStatement>
   </rdf:Description> 
   <rdf:Description rdf:about="" xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/"> 
-   <xmpMM:DocumentID>uuid:AED1DDBC-D24F-2551-4950-9F33EC0F2242</xmpMM:DocumentID> 
-   <xmpMM:InstanceID>uuid:717262EA-4EE5-0A79-6040-7C8A15D31A72</xmpMM:InstanceID> 
+   <xmpMM:DocumentID>uuid:F14074B5-64EC-7190-46C0-7E1631807D08</xmpMM:DocumentID> 
+   <xmpMM:InstanceID>uuid:FD93B55C-6E2A-E10F-6F57-FA1A29A43A1E</xmpMM:InstanceID> 
   </rdf:Description> 
  </rdf:RDF> 
 </x:xmpmeta> 
