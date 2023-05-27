@@ -36,11 +36,17 @@ The workflow of our system, starting from the train collection provided by \text
 
 \begin{figure}[!h]
     \centering
-    \includegraphics[height=0.7\textheight, angle =90, keepaspectratio]{figure/Classes_diagram_white.pdf}
+    \includegraphics[height=0.7\textheight, angle =90, keepaspectratio]{figure/Classes_diagram_white_crop.pdf}
     \caption{Diagram of the classes implemented by \textit{CLOSE} \ac{IR} system}
     \label{fig:Classes_diagram_white}
 \end{figure}
 \clearpage
+The class diagram of the system [\ref{fig:Classes_diagram_white}] retraces the Y model [\ref{fig:lucene_yModel}] of an IR system: in fact, it is possible to see as an indexer class and a searcher class that are, in this order,
+called by the main class \textit{CloseSearchEngine} of our system. The \textit{Analyzer} class is instantiated before all, as it is used both from the two main branches stated before. Here many other Lucene and Solr tool are istantiated, as long as this component
+is responsible of analyzing tokens, and here most of our processing phase goes on: in particular, the tokenizer and the stemmer (and some NLP filters used in a trial).\\
+The other connected component of the diagram is related to the parsing section: here, while walking on the file tree, the \textit{Indexer} uses this component to generate, from a JSON document, an actual Java object (\textit{ParsedTextDocument}) representing it with its fields.\\
+The \textit{Searcher} class firstly parses the queries from the trec format in a Lucene \textit{QualityQuery} object, through our \textit{ClefQueryParser} class. It also istantiate the \textit{ReRanker}, responsible of the second ranking phase.\\
+Other utility classes are included but no longer used in our project.
 
 \subsection{Parser} \label{parser_subsec}
 As stated before, the documents in the collection provided by the \ac{CLEF} \textit{LongEval LAB 2023} \cite{cleflongeval} are essentially the corpus of web pages, to better represent the nature of a web test collection.
@@ -198,16 +204,36 @@ after getting the query expansions, each of them is added to the \textit{Boolean
 This main query is boosted using Lucene's \textit{BoostQuery} \cite{luceneboostquery}, with a boost value tuned at 14.68 multiplied by the number of expansions. We got this value by a trial \& error approach we used to fine tune this parameter.
 
 \subsubsection{Document Re-Ranking}
-This is the process of ranking the documents retrieved by the search function of the \textit{Searcher} (\ref{searcher_subsec}) a second time, using, in our case, a model that maps sentences and paragraphs to a 384-dimensional dense vector space called \textit{all-MiniLM-L6-v2}~\cite{huggingfaceallminilml6v2}. This sentence transformer model is coming from a Python framework called \textit{Sentence Transformers}~\cite{sentence-transformers}, also \textit{all-MiniLM-L6-v2} aims to train sentence embedding models on very large sentence level datasets using a self-supervised contrastive learning objective.
-\newline
-It works in the following way: in the constructor of the \textit{Searcher} the Re-Ranker is initialized and a predictor is created to perform inference.
-At the end of the search function, we call a \textit{sort} function that, using the predictor, creates embeddings for the documents and, for each query, calculates the similarity between the query and the documents.
-Finally, these scores are multiplied by the actual document's scores, and the documents are then sorted by looking at these new scores.
-\newline
-We tested different combinations of parameters to find the best one, and we found that the best combination is multiplying the document's score by the \textit{BM25Similarity} function, with the similarity calculated with the \textit{cosine} function.
+Re-Ranking is the process of ranking documents retrieved by the search function of the \textit{Searcher} (\ref{searcher_subsec}). 
+To accomplish this task, we utilized sentence transformers~\cite{sentence-transformers}, a Python framework known for its state-of-the-art sentence, text, and image embeddings. 
+Various models were experimented with, and the one yielding the best results was identified as \textit{all-MiniLM-L6-v2}~\cite{huggingfaceallminilml6v2}. 
+This particular model aims to train sentence embedding models using a self-supervised contrastive learning objective on vast sentence-level datasets, ultimately mapping sentences and paragraphs to a dense vector space of 384 dimensions.
+
+To generate embeddings for both the documents and query retrieved by the search function, we loaded the \textit{all-MiniLM-L6-v2} model and instantiated a \textit{SentenceTransformer} object. 
+For the purpose of calculating similarity, we employed the widely used \textit{cosine similarity} formula, which computes the similarity between two vectors. The formula is defined as follows:
+
+\begin{equation}
+\text{similarity} = \frac{t \cdot d_i}{|t| |d_i|}\label{eq:similarity_equation}
+\end{equation}
+
+Here, $t$ represents the query vector, and $d_i$ denotes the vector of the $i$-th document.
+
+Subsequently, we interpolated this similarity score with the BM25 score to improve the ranking of the documents. 
+Among the different approaches we explored, the most successful one was as follows:
+
+
+\begin{equation}
+\text{rank} = \text{BM25\_score} \times \text{similarity} \label{eq:rank_equation}
+\end{equation}
+
+To visualize the re-ranking operation's effectiveness, we plotted the results for 50 sample queries, as depicted in Figure \ref{fig:re-ranking}.
+
 \begin{figure}[!ht]
-    \centering
-    \includegraphics[scale=0.45, keepaspectratio]{figure/re-ranking}
-    \caption{Plot of the re-ranking operation performed on 50 sample queries}
-    \label{fig:re-rankinge}
+\centering
+\includegraphics[scale=0.45, keepaspectratio]{figure/re-ranking}
+\caption{Plot illustrating the re-ranking operation performed on 50 sample queries}
+\label{fig:re-ranking}
 \end{figure}
+
+Finally, we sorted the documents based on the new rank and returned them.
+
