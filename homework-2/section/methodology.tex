@@ -31,12 +31,12 @@ The workflow of our system, starting from the train collection provided by \text
 \end{figure}
 
 \newpage
-\enlargethispage{5\baselineskip}
+% \enlargethispage{5\baselineskip}
 \subsection{Class Diagram}
 
 \begin{figure}[!h]
     \centering
-    \includegraphics[height=0.7\textheight, angle =90, keepaspectratio]{figure/Classes_diagram_white_crop.pdf}
+    \includegraphics[height=0.65\textheight, angle =90, keepaspectratio]{figure/Classes_diagram_white_crop.pdf}
     \caption{Diagram of the classes implemented by \textit{CLOSE} \ac{IR} system}
     \label{fig:Classes_diagram_white}
 \end{figure}
@@ -66,7 +66,7 @@ This was the result of the trial and error approach we adopted for implementing 
     \label{fig:Parser_implementation_workflow}
 \end{figure}
 
-\newpage
+
 The types of noises we tried to remove are the following:
 \begin{itemize}
 \item \textit{JavaScript} scripts,
@@ -155,7 +155,7 @@ Our implementation does so by accepting the following parameters:
   In our case, we use a model called \textit{all-MiniLM-L6-v2} \cite{huggingfaceallminilml6v2}, explained in the following subsection.
 \end{itemize}
 
-\newpage
+
 \subsubsection{Query Expansion}
 When running the search function, one of the first actions performed is to generate new queries from the original ones by query expansion \cite{wang2023}. \\
 % For this task we have taken inspiration from the work of Shuai Wang \cite{wang2023}. 
@@ -180,7 +180,7 @@ is:
 The main difference between \textit{davinci-text-002} and \textit{davinci-text-003} is that the latter has been trained on a larger dataset, allowing it to generate more accurate results \cite{davincicomparison}.
 
 
-\enlargethispage{2\baselineskip}
+% \enlargethispage{2\baselineskip}
 \subsubsection{Query Boosting}
 Query boosting is a technique used to assign greater relevance to certain query terms or queries.\newline
 We tried the following approach that seemed to improve the overall results: when building the queries in the search function of the \textit{Searcher} (\ref{searcher_subsec}), for each query, a \textit{BooleanQuery} \cite{lucenebooleanquery} is built in the following way: 
@@ -188,8 +188,8 @@ after getting the query expansions, each of them is added to the \textit{Boolean
 This main query is boosted using Lucene's \textit{BoostQuery} \cite{luceneboostquery}, with a boost value tuned at 14.68 multiplied by the number of expansions. We got this value by a trial \& error approach we used to fine-tune this parameter.
 
 
-\newpage
-\enlargethispage{6\baselineskip}
+
+% \enlargethispage{6\baselineskip}
 \subsubsection{Document Re-Ranking}
 Re-Ranking is the process of ranking documents retrieved by the search function of the \textit{Searcher} (\ref{searcher_subsec}). 
 To accomplish this task, we utilized sentence transformers~\cite{sentence-transformers}, a Python framework known for its state-of-the-art sentence, text, and image embeddings. 
@@ -224,3 +224,4 @@ To visualize the re-ranking operation's effectiveness, we plotted the results fo
 
 Finally, we sorted the documents based on the new rank and returned them.
 
+\newpage

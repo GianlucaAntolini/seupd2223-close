@@ -67,7 +67,7 @@ A schema of the overall project structure is the following:
                                      |------ utils
 \end{lstlisting}
 
-\newpage
+
 \begin{sidewaysfigure}[htp]
     \vspace*{\fill}
     
@@ -119,7 +119,7 @@ The types of noises we tried to remove are the following:
 \item Hashtags and mentions.
 \end{itemize}
 
-\newpage
+
 We also identified some patterns of words and symbols to remove:
 \begin{itemize}
 \item Two words separated by an underscore, like \textit{word1\_word2}
@@ -375,7 +375,7 @@ is:
 The main difference between \textit{davinci-text-002} and \textit{davinci-text-003} is that the latter has been trained on a larger dataset, allowing it to generate more accurate results \cite{davincicomparison}.
 
 
-\enlargethispage{2\baselineskip}
+% \enlargethispage{2\baselineskip}
 \subsubsection{Query Boosting}
 Query boosting is a technique used to assign greater relevance to certain query terms or queries.\newline
 We tried the following approach that seemed to improve the overall results: when building the queries in the search function of the \textit{Searcher} (\ref{searcher_subsec}), for each query, a \textit{BooleanQuery} \cite{lucenebooleanquery} is built in the following way: 

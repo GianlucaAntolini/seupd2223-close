@@ -37,9 +37,9 @@ Still, we put here an extract of the first three columns of Table \ref{tab:resul
     \label{tab:runs_recap}
 \end{table}
 
-\newpage
+
 \subsection{Analysis of Results on the French Collection}
-\enlargethispage{5\baselineskip}
+% \enlargethispage{5\baselineskip}
 \subsubsection{Overall \textit{nDCG} Comparison}  \label{sec:ndcg_comparison_french}
 
 The overall \ac{nDCG} comparison of runs 2, 3, and 5 on the French collection is presented in Figure \ref{fig:overall_ndcg_french_boxplot}. 
@@ -67,8 +67,8 @@ On the other hand, run 3 displays a relatively smaller drop in \ac{nDCG} compare
 In contrast, run 2 exhibits relatively lower \ac{nDCG} scores, particularly in the long-term evaluation. This can be attributed to its more greedy approach, which might compromise its ability to retrieve relevant documents as the collection evolves over time.
 
 
-\newpage
-\enlargethispage{7\baselineskip}
+
+% \enlargethispage{7\baselineskip}
 \subsubsection{Overall \textit{MAP} Comparison} \label{sec:map_comparison_french}
 The boxplot shown in Figure \ref{fig:map_french} presents the overall \ac{MAP} comparison of runs 2, 3, and 5 on the French Collection.
 The notation for the used colors is the same as for Figure \ref{fig:overall_ndcg_french_boxplot}.
@@ -134,7 +134,7 @@ The "\textit{Run A}" and "\textit{Run B}" columns indicate the runs being compar
 The "\textit{Lower Limit}" and "\textit{Upper Limit}" columns represent the lower and upper bounds of the confidence interval, while the "\textit{A-B}" column indicates the mean difference between the runs.
 The "\textit{P-value}" column displays the statistical significance of the comparison, indicating the level of significance and suggesting whether there is a significant difference in performance between runs.
 
-\newpage
+
 \begin{table}[!h]
     \centering
     \caption{\ac{nDCG} Multiple Comparisons for runs 2, 3, and 5 on the Long Term French Collection}
@@ -169,8 +169,8 @@ The results displayed in Table \ref{table:lt_anova_french_ap} don't say anything
 
 Finally, the p-values obtained from the comparisons reinforce the observations made from the two-way \ac{ANOVA} plot, highlighting the superior performance of Run 5 and the relatively stable performance of Run 3 compared to the other runs.
 
-\newpage
-\enlargethispage{10\baselineskip}
+
+% \enlargethispage{10\baselineskip}
 \subsubsection{Two-way ANOVA on the Short Term French Collection}
 
 Similarly, the results of the two-way \ac{ANOVA} for \ac{nDCG} and \ac{AP} performed on the Short Term French Collection are visualized in Figure \ref{fig:st_anova_french}.
@@ -234,8 +234,8 @@ This was easily predictable since this is the last and most elaborate and promis
 Anyway, by boxplots in Sections \ref{sec:ndcg_comparison_french} and \ref{sec:map_comparison_french} emerged that our \ac{IR} system can still be optimized towards persistence over time.
 
 
-\newpage
-\enlargethispage{8\baselineskip}
+
+% \enlargethispage{8\baselineskip}
 \subsection{Analysis of Results on the English Collection}
 
 \subsubsection{Overall \textit{nDCG} Comparison} \label{sec:ndcg_comparison_eng}
@@ -263,8 +263,8 @@ In summary, the overall \ac{nDCG} comparison confirms that run 4 performs better
 Run 4 demonstrates higher \ac{nDCG} scores and exhibits greater stability between the Short and Long Term evaluations, while run 1 experiences a noticeable decline in performance when moving from the Short to the Long Term.
 These findings highlight the importance of the improvements achieved in run 4 and emphasize its superior retrieval effectiveness compared to run 1.
 
-\newpage
-\enlargethispage{6\baselineskip}
+
+% \enlargethispage{6\baselineskip}
 \subsubsection{Overall \textit{MAP} Comparison} \label{sec:map_comparison_eng}
 
 We now turn our attention to the overall \ac{MAP} comparison of runs 1 and 4 on the English collection, as illustrated in Figure \ref{fig:map_english}.
@@ -287,8 +287,8 @@ It's also noticeable how run 1 slightly reaches a \ac{MAP} score of 20\%, while 
 These findings reinforce the conclusions drawn in Section \ref{sec:ndcg_comparison_eng} regarding the superior performance of run 4 compared to run 1 on the English Collection.
 
 
-\newpage
-\enlargethispage{8\baselineskip}
+
+% \enlargethispage{8\baselineskip}
 \subsubsection{Two-way \textit{ANOVA} on the Long Term English Collection}
 
 The results of the two-way \ac{ANOVA} performed on the Long Term English Collection are shown in Figure \ref{fig:lt_anova_eng}, which illustrates the \ac{nDCG} and \ac{AP} scores for Run 1 in red on the left and Run 4 in blue on the right.
@@ -354,8 +354,8 @@ The positive A-B difference indicates that run 4 consistently achieves higher \a
 These findings further support the conclusion that run 4 performs better than run 1 in terms of retrieving relevant documents over the long term on the English collection, as discussed in Sections \ref{sec:ndcg_comparison_eng} and \ref{sec:map_comparison_eng}.
 
 
-\newpage
-\enlargethispage{5\baselineskip}
+
+% \enlargethispage{5\baselineskip}
 \subsubsection{Two-way \textit{ANOVA} on the Short Term English Collection}
 
 Similarly, the results of the two-way \ac{ANOVA} for \ac{nDCG} and \ac{AP} performed on the Short Term English Collection are depicted in Figure \ref{fig:st_anova_eng}.
@@ -414,8 +414,8 @@ The p-value of zero further supports the significance of this difference.
 These findings consistently demonstrate the superiority of run 4 over run 1 in terms of \ac{nDCG} and \ac{AP} scores in both short and long-term evaluations of the English collection.
 
 
-\newpage
-\enlargethispage{4\baselineskip}
+
+% \enlargethispage{4\baselineskip}
 \subsection{Final Considerations on Statistical Analysis}
 
 In this section, we conducted a comprehensive statistical analysis of the retrieval performance of our system on both the French and English collections. 
