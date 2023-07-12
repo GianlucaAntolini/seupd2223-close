@@ -16,8 +16,8 @@
 % 
 
 \def\RCSfile{ceurart}%
-\def\RCSversion{0.4.8}%
-\def\RCSdate{2022/07/04}%
+\def\RCSversion{0.4.11}%
+\def\RCSdate{2023/06/14}%
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{\RCSfile}[\RCSdate, \RCSversion: Typesetting articles for CEUR Workshop Proceedings (CEUR-WS.org)]
 
@@ -1744,7 +1744,8 @@
     % \skip_vertical:n { - \l_tmpa_dim }
     % }
     \skip_vertical:n { \baselineskip }
-    \noindent \abstractname \par
+    % \noindent \abstractname \par
+    \noindent { \textbf{\sffamily Abstract} } \par
     % \skip_vertical:n { -4pt}
     % \noindent \rule{.65\textwidth}{.2pt}\par
     \footnotesize
@@ -1898,13 +1899,13 @@
   \@rightskip\@flushglue \rightskip\@rightskip
   % \hangindent\dimexpr\wd\@tempboxa+0.5em\relax
   \begin{minipage}[c]{\ccLogoWidth}
-    \href{http://ceur-ws.org}%
+    \href{https://ceur-ws.org}%
     % {\lower\baselineskip\hbox{\unhcopy\@tempboxa}}\enskip
     {\hbox{\unhcopy\@tempboxa}}
   \end{minipage}
   \nobreak\enskip
   \begin{minipage}[c]{\linewidth - \ccLogoWidth - 2\footnotemargin}
-    {CEUR~Workshop~Proceedings~(\href{http://ceur-ws.org}{CEUR-WS.org})}%
+    {CEUR~Workshop~Proceedings~(\href{https://ceur-ws.org}{CEUR-WS.org})}%
   \end{minipage}
 }
 

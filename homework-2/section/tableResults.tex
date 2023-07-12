@@ -52,33 +52,34 @@
 %\end{itemize}
 
 \begin{table}
-    \begin{tabularx}{1\textwidth}{|l|X|X|X|X|X|} 
-    \hline
-    \textbf{Parameter} & \textbf{Run 1} & \textbf{Run 2} & \textbf{Run 3} & \textbf{Run 4} & \textbf{Run 5} \\
-    \hline
-    Token Filter & Porter- \newline StemFilter & FrenchLight- \newline StemFilter & FrenchLight- \newline StemFilter & PorterStem- \newline Filter & FrenchLight- \newline StemFilter \\
-    \hline
-    Tokenizer & Standard & Standard & Standard & Standard & Standard \\
-    \hline
-    Length Filter & 2-15 & 2-15 & 2-15 & 2-15 & 2-15 \\
-    \hline
-    Stop Filter & "\textit{long-stoplist.txt}" & "\textit{long-stoplist-fr.txt}" & "\textit{long-stoplist-fr.txt}" & "\textit{long-stoplist.txt}" & "\textit{new-long-stoplist-fr.txt}" \\
-    \hline
-    Lower Case Filter & Yes & Yes & Yes & Yes & Yes \\
-    \hline
-    Similarity & BM25 & BM25 & BM25 & BM25 & BM25 \\
-    \hline
-    Query Expansion & No & Yes & Yes & Yes & Yes \\
-    \hline
-    Re-ranking & No & No & Yes & Yes & Yes \\
-    \hline
-    \end{tabularx}
     \caption{Parameters used in the 5 different runs submitted to \ac{CLEF}}
+    \begin{tabularx}{1\textwidth}{|l|X|X|X|X|X|} 
+        \hline
+        \textbf{Parameter} & \textbf{Run 1} & \textbf{Run 2} & \textbf{Run 3} & \textbf{Run 4} & \textbf{Run 5} \\
+        \hline
+        Token Filter & Porter- \newline StemFilter & FrenchLight- \newline StemFilter & FrenchLight- \newline StemFilter & PorterStem- \newline Filter & FrenchLight- \newline StemFilter \\
+        \hline
+        Tokenizer & Standard & Standard & Standard & Standard & Standard \\
+        \hline
+        Length Filter & 2-15 & 2-15 & 2-15 & 2-15 & 2-15 \\
+        \hline
+        Stop Filter & "\textit{long-stoplist.txt}" & "\textit{long-stoplist-fr.txt}" & "\textit{long-stoplist-fr.txt}" & "\textit{long-stoplist.txt}" & "\textit{new-long-stoplist-fr.txt}" \\
+        \hline
+        Lower Case Filter & Yes & Yes & Yes & Yes & Yes \\
+        \hline
+        Similarity & BM25 & BM25 & BM25 & BM25 & BM25 \\
+        \hline
+        Query Expansion & No & Yes & Yes & Yes & Yes \\
+        \hline
+        Re-ranking & No & No & Yes & Yes & Yes \\
+        \hline
+    \end{tabularx}
     \label{tab:run_parameters}
 \end{table}
 
 \begin{table}[h!]
     \centering
+    \caption{results for systems (top-1000 documents), on the Train collection and the train query set of LongEval.}
     \begin{tabular}{ |l|c|c|c|c|c| }
         \hline
         metrics & run1 & run2 & run3 & run4 & run5 \\ \hline
@@ -106,7 +107,6 @@
         ndcg\_cut\_100 & 0.2351 & 0.3349 & 0.3652 & 0.3016 & 0.3678 \\ \hline
         ndcg\_cut\_1000 & 0.2719 & 0.3655 & 0.3924 & 0.3291 & 0.3982 \\ \hline
     \end{tabular}
-    \caption{results for systems (top-1000 documents), on the Train collection and the train query set of LongEval.}
     \label{table:results}
 \end{table}
 
